@@ -3,7 +3,11 @@ const express=require('express');
 const hbs=require('hbs');
 const geocode=require('./utils/geocode');
 const forecast=require('./utils/forecast');
+
+
 const app=express();
+const port=process.env.PORT || 3000 //run on port avail on heroku or local host 3000
+
 //define paths for express config
 const dirpath=path.join(__dirname,'../public');//joins the last dir in path with the dir defined ..means moving up a dir
 const viewspath=path.join(__dirname,'../templates/views');
@@ -76,5 +80,5 @@ app.get('*',(req,res)=>// error page
         errorMessage:"Page not found."
     })
 })
-app.listen(3000);
+app.listen(port); 
 console.log("server working");
